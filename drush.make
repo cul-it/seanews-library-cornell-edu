@@ -13,6 +13,7 @@ libraries[SolrPhpClient][destination] = modules/apachesolr
 libraries[SolrPhpClient][directory_name] = "SolrPhpClient"
 libraries[SolrPhpClient][download][type] = "get"
 libraries[SolrPhpClient][download][url] = "http://solr-php-client.googlecode.com/files/SolrPhpClient.r22.2009-11-09.tgz"
+projects[acl][version] = "1.0"
 projects[admin_menu][version] = "3.0-rc5"
 projects[adminrole] = "1.0"
 projects[advanced_help][version] = "1.1"
