@@ -96,6 +96,7 @@ projects[views_php][version] = "1.0-alpha1"
 projects[webform][version] = "4.2"
 projects[wysiwyg][version] = "2.2"
 projects[xmlsitemap][version] = "2.2"
+projects[xmlsitemap][patch][] = "http://www.drupal.org/files/issues/xmlsitemap.module.php_.patch"
 projects[zen][version] = "5.5"
 
 
