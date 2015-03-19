@@ -3,7 +3,7 @@
 
 core = 7.x
 api = 2
-projects[drupal][version] = "7.34"
+projects[drupal][version] = "7.35"
 projects[drupal][patch][] = "http://www.drupal.org/files/issues/1349080-231-d7-move-access-to-join-condition_rework-placeholders.patch"
 
 libraries[jquery.ui][directory_name] = "jquery.ui"
@@ -32,7 +32,7 @@ projects[content_access][version] = "1.2-beta2"
 projects[content_taxonomy][version] = "1.0-beta2"
 projects[context][version] = "3.6"
 projects[css_injector][version] = "1.10"
-projects[ctools][version] = "1.6"
+projects[ctools][version] = "1.7"
 projects[date][version] = "2.8"
 projects[date_repeat_entity][version] = "2.0"
 projects[ddf][version] = "1.7"
@@ -93,7 +93,7 @@ projects[views][version] = "3.10"
 projects[views_bulk_operations][version] = "3.2"
 projects[views_data_export][version] = "3.0-beta8"
 projects[views_php][version] = "1.0-alpha1"
-projects[webform][version] = "4.4"
+projects[webform][version] = "4.5"
 projects[wysiwyg][version] = "2.2"
 projects[xmlsitemap][patch][] = "http://www.drupal.org/files/issues/xmlsitemap.module.php_.patch"
 projects[xmlsitemap][version] = "2.2"
