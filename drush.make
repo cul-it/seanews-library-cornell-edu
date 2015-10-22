@@ -5,6 +5,7 @@ core = 7.x
 api = 2
 projects[drupal][version] = "7.41"
 ;;projects[drupal][patch][] = "http://www.drupal.org/files/issues/1349080-231-d7-move-access-to-join-condition_rework-placeholders.patch"
+;;projects[drupal][patch][] = "https://www.drupal.org/files/1443158-file-field-presave-D7.patch"
 
 libraries[jquery.ui][directory_name] = "jquery.ui"
 libraries[jquery.ui][download][type] = "get"
