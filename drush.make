@@ -4,7 +4,7 @@
 core = 7.x
 api = 2
 projects[drupal][version] = "7.41"
-projects[drupal][patch][] = "http://www.drupal.org/files/issues/1349080-231-d7-move-access-to-join-condition_rework-placeholders.patch"
+;;projects[drupal][patch][] = "http://www.drupal.org/files/issues/1349080-231-d7-move-access-to-join-condition_rework-placeholders.patch"
 
 libraries[jquery.ui][directory_name] = "jquery.ui"
 libraries[jquery.ui][download][type] = "get"
