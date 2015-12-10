@@ -68,6 +68,7 @@ projects[mimedetect][patch][] = "http://www.drupal.org/files/mimedetect-magic.pa
 projects[mimedetect][version] = "1.0-beta1"
 projects[module_filter][version] = "2.0"
 projects[mollom][version] = "2.14"
+projects[nodeaccess_nodereference] = "1.22"
 projects[page_title][version] = "2.7"
 projects[pathauto][version] = "1.3"
 projects[prepopulate][version] = "2.0"
