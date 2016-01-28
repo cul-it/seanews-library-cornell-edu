@@ -89,9 +89,12 @@ projects[seanews][directory_name] = "seanews"
 projects[seanews][download][type] = "git"
 projects[seanews][download][url] = "git@github.com:cul-it/seanews.git"
 projects[seanews][type] = "module"
+<<<<<<< Updated upstream
 projects[search_api][version] = "1.16"
 projects[search_api_attachments][version] = "1.6"
 projects[search_api_solr][version] = "1.8"
+=======
+>>>>>>> Stashed changes
 projects[seo_checklist][version] = "4.1"
 projects[simplesaml_authentication_cul][download][type] = "get"
 projects[simplesaml_authentication_cul][download][url] = "https://featureserver.library.cornell.edu/sites/featureserver.library.cornell.edu/files/fserver/simplesaml_authentication_for_cul-7.x-1.0-rc3.tar"
