@@ -21,7 +21,6 @@ projects[auto_nodetitle][patch][] = "http://www.drupal.org/files/issues/auto_nod
 projects[auto_nodetitle][version] = "1.0"
 projects[autosave][version] = "2.2"
 projects[autoupload][version] = "1.0"
-projects[bluemasters][version] = "2.1"
 projects[captcha][version] = "1.3"
 projects[cck][version] = "3.0-alpha3"
 projects[ckeditor][version] = "1.16"
