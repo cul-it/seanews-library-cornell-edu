@@ -3,7 +3,7 @@
 
 core = 7.x
 api = 2
-projects[drupal][version] = "7.42"
+projects[drupal][version] = "7.43"
 libraries[jquery.ui][directory_name] = "jquery.ui"
 libraries[jquery.ui][download][type] = "get"
 libraries[jquery.ui][download][url] = "http://jquery-ui.googlecode.com/files/jquery-ui-1.8.17.zip"
