@@ -4,4 +4,5 @@ Drupal site: Southeast Asia Newspaper Archive
 
 Drush make file and notes.
 
-beta4
+beta6
+
