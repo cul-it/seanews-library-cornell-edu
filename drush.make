@@ -4,6 +4,7 @@
 core = 7.x
 api = 2
 projects[drupal][version] = "7.43"
+projects[drupal][patch][] = "http://www.drupal.org/files/issues/drupal-too_many_connections-930876-160.patch"
 libraries[jquery.ui][directory_name] = "jquery.ui"
 libraries[jquery.ui][download][type] = "get"
 libraries[jquery.ui][download][url] = "http://jquery-ui.googlecode.com/files/jquery-ui-1.8.17.zip"
@@ -44,6 +45,7 @@ projects[libraries][version] = "2.2"
 projects[link][version] = "1.4"
 projects[media][version] = "1.5"
 projects[module_filter][version] = "2.0"
+projects[mollom][version] = "2.15"
 projects[nodeaccess_nodereference] = "1.22"
 projects[page_title][version] = "2.7"
 projects[pathauto][version] = "1.3"
