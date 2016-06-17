@@ -3,7 +3,7 @@
 
 core = 7.x
 api = 2
-projects[drupal][version] = "7.43"
+projects[drupal][version] = "7.44"
 projects[drupal][patch][] = "http://www.drupal.org/files/issues/drupal-too_many_connections-930876-160.patch"
 libraries[jquery.ui][directory_name] = "jquery.ui"
 libraries[jquery.ui][download][type] = "get"
