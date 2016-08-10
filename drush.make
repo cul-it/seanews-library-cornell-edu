@@ -3,7 +3,7 @@
 
 core = 7.x
 api = 2
-projects[drupal][version] = "7.44"
+projects[drupal][version] = "7.50"
 projects[drupal][patch][] = "http://www.drupal.org/files/issues/drupal-too_many_connections-930876-160.patch"
 libraries[jquery.ui][directory_name] = "jquery.ui"
 libraries[jquery.ui][download][type] = "get"
@@ -80,10 +80,10 @@ projects[strongarm][version] = "2.0"
 projects[taxonomy_manager][version] = "1.0"
 projects[token][version] = "1.6"
 projects[transliteration][version] = "3.2"
-projects[uuid][version] = "1.0-beta1"
+projects[uuid][version] = "1.0-beta2"
 projects[uuid_features][version] = "1.0-alpha4"
 projects[views][version] = "3.14"
 projects[views_bulk_operations][version] = "3.3"
 projects[views_data_export][version] = "3.0-beta9"
-projects[webform][version] = "4.12"
+projects[webform][version] = "4.13"
 projects[wysiwyg][version] = "2.2"
