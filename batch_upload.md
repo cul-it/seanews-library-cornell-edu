@@ -9,28 +9,28 @@ Basic information about uploading newspaper Issues and Issue Documents to the SE
 ### Data types
 
 1. Publication
-..* add new Publications via Drupal interface
+  * add new Publications via Drupal interface
 2. Issue
-..* Title
-..* Body
-..* Issue ID - unique name for this issue - text
-..* Publication Reference - select the 'Title' of the Publication this issue belongs in - entity reference
-..* Issue Date - date
-..* Issue Volume - volume and issue number, varies by publication - text
-..* note: no documet is stored with the Issue data type
+  * Title
+  * Body
+  * Issue ID - unique name for this issue - text
+  * Publication Reference - select the 'Title' of the Publication this issue belongs in - entity reference
+  * Issue Date - date
+  * Issue Volume - volume and issue number, varies by publication - text
+  * note: no documet is stored with the Issue data type
 3. Issue Part
-..* Title
-..* Issue Part ID - unique id for this part of the issue - text
-..* Issue Part Order - number for setting the order of the parts. used ascending - float
-..* Issue Part Document - uploaded file for this issue, allows multi-document issues - file
-..* Issue Reference - select the 'Title' of Issue this part belongs in - entity reference
-..* Issue Part Description - optional description for this article - text
+  * Title
+  * Issue Part ID - unique id for this part of the issue - text
+  * Issue Part Order - number for setting the order of the parts. used ascending - float
+  * Issue Part Document - uploaded file for this issue, allows multi-document issues - file
+  * Issue Reference - select the 'Title' of Issue this part belongs in - entity reference
+  * Issue Part Description - optional description for this article - text
 
 ### CSV file formats
 
 2. Issue Import CSV File
-..* /import/issue_import
-..* template: issue_import_template.csv
+  * /import/issue_import
+  * template: issue_import_template.csv
 3. Issue Part CSV file
-..* /import/issue_parts_import
-..* template: issue_parts_import_template.csv
+  * /import/issue_parts_import
+  * template: issue_parts_import_template.csv
