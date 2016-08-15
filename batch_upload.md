@@ -25,3 +25,12 @@ Basic information about uploading newspaper Issues and Issue Documents to the SE
 ..* Issue Part Document - uploaded file for this issue, allows multi-document issues - file
 ..* Issue Reference - select the 'Title' of Issue this part belongs in - entity reference
 ..* Issue Part Description - optional description for this article - text
+
+### CSV file formats
+
+2. Issue Import CSV File
+..* /import/issue_import
+..* template: issue_import_template.csv
+3. Issue Part CSV file
+..* /import/issue_parts_import
+..* template: issue_parts_import_template.csv
