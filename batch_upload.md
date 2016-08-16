@@ -14,6 +14,7 @@ Basic information about uploading newspaper Issues and Issue Documents to the SE
   * Title
   * Body
   * Issue ID - unique name for this issue - text
+    * calculated as a hash of publication, date, volume
   * Publication Reference - select the 'Title' of the Publication this issue belongs in - entity reference
   * Issue Date - date
   * Issue Volume - volume and issue number, varies by publication - text
@@ -21,6 +22,7 @@ Basic information about uploading newspaper Issues and Issue Documents to the SE
 3. Issue Part
   * Title
   * Issue Part ID - unique id for this part of the issue - text
+    * calculated as a hash of issue, part order
   * Issue Part Order - number for setting the order of the parts. used ascending - float
   * Issue Part Document - uploaded file for this issue, allows multi-document issues - file
   * Issue Reference - select the 'Title' of Issue this part belongs in - entity reference
@@ -34,3 +36,11 @@ Basic information about uploading newspaper Issues and Issue Documents to the SE
 3. Issue Part CSV file
   * /import/issue_parts_import
   * template: issue_parts_import_template.csv
+
+## Procedure
+
+1. Create publication node in Drupal if necessary.
+2. Build csv file for issues. One record per issue. Be sure combined publication, date and volume are unique.
+3. Import issues csv file.
+4. Build csv file for issue parts. One record per document. Be sure combined issue and part order are unique.
+5. Import issue parts csv file.
