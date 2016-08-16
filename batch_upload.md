@@ -14,6 +14,7 @@ Basic information about uploading newspaper Issues and Issue Documents to the SE
   * Title
   * Body
   * Issue ID - unique name for this issue - text
+    * calculated as a hash of publication, date, volume
   * Publication Reference - select the 'Title' of the Publication this issue belongs in - entity reference
   * Issue Date - date
   * Issue Volume - volume and issue number, varies by publication - text
@@ -21,6 +22,7 @@ Basic information about uploading newspaper Issues and Issue Documents to the SE
 3. Issue Part
   * Title
   * Issue Part ID - unique id for this part of the issue - text
+    * calculated as a hash of issue, part order
   * Issue Part Order - number for setting the order of the parts. used ascending - float
   * Issue Part Document - uploaded file for this issue, allows multi-document issues - file
   * Issue Reference - select the 'Title' of Issue this part belongs in - entity reference
