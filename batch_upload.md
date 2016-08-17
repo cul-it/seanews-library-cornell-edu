@@ -44,3 +44,12 @@ Basic information about uploading newspaper Issues and Issue Documents to the SE
 3. Import issues csv file.
 4. Build csv file for issue parts. One record per document. Be sure combined issue and part order are unique.
 5. Import issue parts csv file.
+
+## Amazon S3 naming conventions
+
+- see [Object Naming Guidelines] (http://docs.aws.amazon.com/AmazonS3/latest/dev/UsingMetadata.html)
+- The following character sets are generally safe for use in key names:
+  - Alphanumeric characters [0-9a-zA-Z]
+  - Special characters !, -, _, ., *, ', (, and )
+
+
