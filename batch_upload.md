@@ -45,6 +45,24 @@ Basic information about uploading newspaper Issues and Issue Documents to the SE
 4. Build csv file for issue parts. One record per document. Be sure combined issue and part order are unique.
 5. Import issue parts csv file.
 
+## Building the csv file
+
+1. aws s3 ls seapapers.library.cornell.edu/issues/ --recursive > issues.txt
+2.
+
+## Parsing the aws s3 ls --recursive file
+
+use \2 for substitutions:
+
+publication /(\/.*?){1}([^\/]*)/
+year (\/.*?){2}([^\/]*)
+volume (\/.*?){3}([^\/]*)
+part (\/.*?){4}([^\/]*)
+filename (\/.*?){5}([^\/]*)
+
+use \1 for substitution on extension:
+extension \.([^\.]+)$
+
 ## Amazon S3 naming conventions
 
 - see [Object Naming Guidelines] (http://docs.aws.amazon.com/AmazonS3/latest/dev/UsingMetadata.html)
