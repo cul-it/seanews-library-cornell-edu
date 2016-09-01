@@ -2,28 +2,17 @@
 # seapapers_s3_csv.sh - list contents of seapapers.library.cornell.edu/issues as a csv file
 #
 
-function to_csv
-{
-  while test $# -gt 0
-    do
-        echo "do something with $1"
-        shift
-    done
-}
-
-#LISTO=`aws s3 ls seapapers.library.cornell.edu/issues/ --recursive`
-
-#to_csv $LISTO
+echo "publication,year,volis,part,extension,title,url"
 
 aws s3 ls seapapers.library.cornell.edu/issues/ --recursive | while read line;
   do
     sizecheck="[0-9]+[0-9] issues\/"
     if [[ $line =~ $sizecheck ]]; then
+      # eliminate directories and empty files - size 0
       path="[0-9]+ (issues\/.*)$"
       if [[ $line =~ $path ]]; then
         pathname="${BASH_REMATCH[1]}"
-        echo "path is $pathname"
-        parts="([^\/]*)\/([^\/]*)\/([^\/]*)\/([^\/]*)\/([^\/]*)\/(.*)\.(.*)$"
+        parts="(issues)\/([^\/]*)\/([0-9]+)\/([^\/]*)\/([^\/]*)\/(.*)\.(.*)$"
         if [[ $pathname =~ $parts ]]; then
           publication="${BASH_REMATCH[2]}"
           year="${BASH_REMATCH[3]}"
@@ -31,7 +20,8 @@ aws s3 ls seapapers.library.cornell.edu/issues/ --recursive | while read line;
           part="${BASH_REMATCH[5]}"
           title="${BASH_REMATCH[6]}"
           extension="${BASH_REMATCH[7]}"
-          echo "$publication $year $volis $part $title $extension"
+          url="https://s3.amazonaws.com/seapapers.library.cornell.edu/$pathname"
+          echo "$publication,$year,$volis,$part,$extension,$title,$url"
         fi
       fi
 
