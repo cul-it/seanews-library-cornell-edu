@@ -63,6 +63,14 @@ filename (\/.*?){5}([^\/]*)
 use \1 for substitution on extension:
 extension \.([^\.]+)$
 
+filename with separate extension
+(\/.*?){5}([^\/]*)\.([^\.]+)$
+\2 filename, \3 extension
+
+publication,year,volume,part
+(\/.*?){1}([^\/]*)\/([^\/]*)\/([^\/]*)\/([^\/]*)\/
+\2,\3,\4,\5
+
 ## Amazon S3 naming conventions
 
 - see [Object Naming Guidelines] (http://docs.aws.amazon.com/AmazonS3/latest/dev/UsingMetadata.html)
