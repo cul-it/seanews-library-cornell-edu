@@ -1,6 +1,6 @@
 ## Uploading Issues to seapapers.library.cornell.edu
 
-Updated - jgr25 8/15/2016
+Updated - jgr25 8/31/2016
 
 ### Description
 
