@@ -24,6 +24,7 @@ aws s3 ls seapapers.library.cornell.edu/issues/ --recursive | while read line;
             title="${BASH_REMATCH[6]}"
             title=`echo "$title" | tr '_' ' ' | tr '"' '""'`
             extension="${BASH_REMATCH[7]}"
+            extension=`echo "$extension" | tr '[:upper:]' '[:lower:]'`
             url="https://s3.amazonaws.com/seapapers.library.cornell.edu/$pathname"
             issuekey="$publication|$year|$volis"
             partkey="$issuekey|$part"
