@@ -2,7 +2,7 @@
 # seapapers_s3_csv.sh - list contents of seapapers.library.cornell.edu/issues as a csv file
 #
 
-echo "publication,year,volis,part,extension,title,url"
+echo "issuekey,partkey,publication,year,volis,part,extension,title,url"
 
 aws s3 ls seapapers.library.cornell.edu/issues/ --recursive | while read line;
   do
@@ -22,9 +22,13 @@ aws s3 ls seapapers.library.cornell.edu/issues/ --recursive | while read line;
             volis="${BASH_REMATCH[4]}"
             part="${BASH_REMATCH[5]}"
             title="${BASH_REMATCH[6]}"
+            title=`echo "$title" | tr '_' ' ' | tr '"' '""'`
             extension="${BASH_REMATCH[7]}"
+            extension=`echo "$extension" | tr '[:upper:]' '[:lower:]'`
             url="https://s3.amazonaws.com/seapapers.library.cornell.edu/$pathname"
-            echo "$publication,$year,$volis,$part,$extension,\"$title\",\"$url\""
+            issuekey="$publication|$year|$volis"
+            partkey="$issuekey|$part"
+            echo "\"$issuekey\",\"$partkey\",$publication,$year,$volis,$part,$extension,\"$title\",\"$url\""
           fi
         fi
       fi
