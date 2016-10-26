@@ -78,4 +78,38 @@ publication,year,volume,part
   - Alphanumeric characters [0-9a-zA-Z]
   - Special characters !, -, _, ., *, ', (, and )
 
+## Directory layout on Amamzon S3 bucket seapapers.library.cornell.edu
+
+Example:
+`seapapers.library.cornell.edu/issues/jati/2014/19-1/8/JATI_Vol_19-_08_DOES_SOCIAL_REMITTANCE_TAKE_PLACE_AMONG_INDONESIAN_PLANTATION_WORKERS_IN_MALAYSIA.pdf`
+
+- Fields
+  * bucket
+		* always `seapapers.library.cornell.edu`
+  * section
+	    * always `issues`
+  * publication
+	    * in this case `jati`
+	    * lower case letters and *
+	    * transliteration of journal name from Cornell field "Title * Romaized by CUL"
+  * year
+	    * in this case `2014`
+	    * year of pyblication for this issue part
+  * volume/issue
+	    * in this case `9-1`
+	    * must be unique for all the issue parts in this publication
+	    * alpha-numeric - see Amazon S3 naming conventions
+	    * don't worry about sort order
+  * issue part sequence number
+	    * in this case `8`
+	    * integer
+	    * sorted numerically * don't use 01,02,etc. just 1,2,...
+	    * must be unique within volume/issue
+	    * determines which part of the issue is listed first, second, etc.
+  * title of issue part
+	    * in this case `JATI_Vol_19-_08_DOES_SOCIAL_REMITTANCE_TAKE_PLA`CE_AMONG_INDONESIAN_PLANTATION_WORKERS_IN_MALAYSIA.pdf
+	    * replace any blanks with _
+	    * alpha-numeric - see Amazon S3 naming conventions
+	    * include the proper file extension
+	      * in this case .pdf
 
