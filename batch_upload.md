@@ -107,7 +107,7 @@ Example:
 	    * must be unique within volume/issue
 	    * determines which part of the issue is listed first, second, etc.
   * title of issue part
-	    * in this case `JATI_Vol_19-_08_DOES_SOCIAL_REMITTANCE_TAKE_PLA`CE_AMONG_INDONESIAN_PLANTATION_WORKERS_IN_MALAYSIA.pdf
+	    * in this case `JATI_Vol_19-_08_DOES_SOCIAL_REMITTANCE_TAKE_PLACE_AMONG_INDONESIAN_PLANTATION_WORKERS_IN_MALAYSIA.pdf`
 	    * replace any blanks with _
 	    * alpha-numeric - see Amazon S3 naming conventions
 	    * include the proper file extension
