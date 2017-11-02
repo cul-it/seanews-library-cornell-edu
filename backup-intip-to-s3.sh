@@ -21,10 +21,10 @@ papers=(
 #lrl
 #lrt
 #mtimur
-nrr
-palopo
-pare
-pjcl
+#nrr
+#palopo
+#pare
+#pjcl
 pjpl
 pnplhp
 pnplkr
