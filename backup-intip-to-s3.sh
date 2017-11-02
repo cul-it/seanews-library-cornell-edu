@@ -66,6 +66,6 @@ for PAPER in "${papers[@]}"
 do
   echo "Use <ctrl> z to stop this script..."
   echo "Paper: $PAPER"
-  aws s3 sync "/Volumes/Elements/intip/$PAPER/" "s3://seapapers.library.cornell.edu/archive/intip/$PAPER/"
+  aws s3 sync "/Volumes/Elements/intip/$PAPER" "s3://seapapers.library.cornell.edu/archive/intip/$PAPER"
   echo "Paper Done: $PAPER"
 done
