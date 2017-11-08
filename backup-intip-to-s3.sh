@@ -41,11 +41,11 @@ papers=(
 #smandiri
 #smer
 #smetro
-smp
-smt
-snp
-sposko
-spp
+#smp
+#smt
+#snp
+#sposko
+#spp
 srp
 srs
 ssk
