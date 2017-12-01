@@ -26,7 +26,6 @@ YEARS=(
 2015
 2016
 )
-FOLDER="/Users/jgr25/Documents/seapapers-archive/vientiane-times/*/*.pdf"
 
 for year in "${YEARS[@]}"
 do
@@ -34,49 +33,11 @@ do
     for f in $FOLDER
     do
         firstlines=`pdfgrep -m 1 -A 6 'V' $f`
+        if [ $? -eq 1 ];then
+            echo "error finding V: $f"
+            break;
+        fi
         echo "$firstlines" | grep -i 'volume\|issue\|kip\|established\|1994' || echo "$f" ; break
         continue
-        case $year in
-            199[456789])
-                line=`pdfgrep -m 1 'KIP' $f`
-                if [ $? -eq 1 ];then
-                    line=`pdfgrep -m 1 'Established' $f`
-                    if [ $? -eq 1 ];then
-                        echo "Didn't match $f"
-                        break 3
-                    else
-                        echo $f $line
-                    fi
-                else
-                    echo $f $line
-                fi
-                ;;
-
-            200[0123])
-                line=`pdfgrep -m 1 'Established' $f`
-                if [ $? -eq 1 ];then
-                    line=`pdfgrep -m 1 '1994' $f`
-                    if [ $? -eq 1 ];then
-                        echo "Didn't match $f"
-                        break 3
-                    else
-                        echo $f $line
-                    fi
-                else
-                    echo $f $line
-                fi
-                ;;
-
-            *) echo "Skipping $year"
-                break 2
-                ;;
-        esac
     done
 done
-
-# for f in $FOLDER
-# do 
-#     line=`pdfgrep ' +700 KIP' $f`
-#     if [ $? -eq 0 ];then
-#      || pdfgrep 'V[O0][A-Z0-9 ]+[0-9]+ +' $f || echo $f
-# done
