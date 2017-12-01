@@ -79,9 +79,11 @@ do
             ;;
         2009)
             STARTSEARCH="vientianetimes"
+            DATEMATCH="[A-Z]* [0-9]*,.*[0-9]* ISSUE [0-9]*"
             ;;
         201[0123456789]) 
             STARTSEARCH="newspaper"
+            DATEMATCH="[A-Z]* [0-9]*,.*[0-9]* ISSUE [0-9]*"
             ;;
         *) STARTSEARCH="v"
             ;;
