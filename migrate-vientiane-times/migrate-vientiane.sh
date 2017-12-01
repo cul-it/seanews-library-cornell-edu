@@ -30,14 +30,23 @@ YEARS=(
 exclude=(
 /Users/jgr25/Documents/seapapers-archive/vientiane-times/1997/1997_73.pdf
 /Users/jgr25/Documents/seapapers-archive/vientiane-times/2000/2000-27.pdf
-/Users/jgr25/Documents/seapapers-archive/vientiane-times/2001/2001-100.pdf
-/Users/jgr25/Documents/seapapers-archive/vientiane-times/2001/2001-101.pdf
-/Users/jgr25/Documents/seapapers-archive/vientiane-times/2001/2001-102.pdf
-)
-
-indexyear=(
-    2002
-    2003
+/Users/jgr25/Documents/seapapers-archive/vientiane-times/2000/2000-1.pdf
+# /Users/jgr25/Documents/seapapers-archive/vientiane-times/2006/197cd2006.pdf
+# /Users/jgr25/Documents/seapapers-archive/vientiane-times/2006/198cd2006.pdf
+# /Users/jgr25/Documents/seapapers-archive/vientiane-times/2006/199cd2006.pdf
+# /Users/jgr25/Documents/seapapers-archive/vientiane-times/2006/200cd2006.pdf
+# /Users/jgr25/Documents/seapapers-archive/vientiane-times/2006/201cd2006.pdf
+/Users/jgr25/Documents/seapapers-archive/vientiane-times/2006/special_issues.pdf
+/Users/jgr25/Documents/seapapers-archive/vientiane-times/2012/124cd2012NG.pdf
+/Users/jgr25/Documents/seapapers-archive/vientiane-times/2012/240cd2012s.pdf
+/Users/jgr25/Documents/seapapers-archive/vientiane-times/2012/246cd2012s.pdf
+/Users/jgr25/Documents/seapapers-archive/vientiane-times/2012/252cd2012s.pdf
+/Users/jgr25/Documents/seapapers-archive/vientiane-times/2012/Specail_laonewyear12.pdf
+/Users/jgr25/Documents/seapapers-archive/vientiane-times/2013/088cd2013s.pdf
+/Users/jgr25/Documents/seapapers-archive/vientiane-times/2014/006cd2014.pdf
+/Users/jgr25/Documents/seapapers-archive/vientiane-times/2014/192cd2014.pdf
+/Users/jgr25/Documents/seapapers-archive/vientiane-times/2014/234cd2014.pdf
+/Users/jgr25/Documents/seapapers-archive/vientiane-times/2014/250cd2014.pdf
 )
 
 for year in "${YEARS[@]}"
