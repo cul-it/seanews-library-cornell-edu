@@ -92,30 +92,36 @@ do
     FOLDER="/Users/jgr25/Documents/seapapers-archive/vientiane-times/$year/*.pdf"
     for f in $FOLDER
     do
+        if [ "$f" = /Users/jgr25/Documents/seapapers-archive/vientiane-times/2016/271cd2016s.pdf ]; then
+            # these files are not opening
+            echo -e "$f\t********* SKIPPED THE REST *************"
+            exit 1
+        fi
+
         for skip in "${exclude[@]}"
         do
             if [ "$skip" == "$f" ]; then
-                echo "$f ********* SKIPPED *************"
+                echo -e "$f\t********* SKIPPED *************"
                 continue 2;
             fi
         done
         
         firstlines=`pdfgrep -i -m 1 -B 5 -A 15 "${STARTSEARCH}" $f`
         if [ $? -eq 1 ];then
-            echo "error finding V: $f"
+            echo "error finding $STARTSEARCH: $f"
             break 2
         fi
         firstline=`echo "$firstlines" | tr -s "[:space:]"`
         # grep -i 'volume\|issue\|kip\|established\|1994' <<< $firstlines
         #grep -i 'jan\|feb\|mar\|apr\|may\|jun\|jul\|aug\|sep\|oct\|nov\|dec\|volume\|issue' <<< $firstlines
         #grep -i 'january\|february\|march\|april\|may\|june\|july\|august\|september\|october\|november\|december\|kip' <<< $firstlines
-        match=`grep -i -o '[A-Z]* [0-9]*,.*[0-9]* ISSUE [0-9]*' <<< $firstline`
+        match=`grep -i -o "$DATEMATCH" <<< $firstline`
         if [ $? -eq 1 ];then
             echo "unparsed $f"
             echo "$firstline"
             break 2
         else
-            echo "$f $match"
+            echo -e "$f\t$match"
         fi
     done
 done
