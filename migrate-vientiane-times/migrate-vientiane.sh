@@ -51,35 +51,58 @@ exclude=(
 
 for year in "${YEARS[@]}"
 do
-    # two full years when there were just indexes on the first page
-    if [ "$year" -eq 2002 ]; then 
-        continue 
+    if [ "$year" -lt 2014 ]; then
+    continue
     fi
-    if [ "$year" -eq 2003 ]; then 
-        continue 
-    fi
-
+    case $year in
+        200[012345]) 
+            STARTSEARCH="volume"
+            ;;
+        200[68]) 
+            STARTSEARCH="newspaper"
+            ;;
+        2007)
+            # filenames are like 'Vientiane Times_2007_01_15.pdf'
+            # get the date from that
+            continue
+            ;;
+        2009)
+            STARTSEARCH="vientianetimes"
+            ;;
+        201[0123456789]) 
+            STARTSEARCH="newspaper"
+            ;;
+        *) STARTSEARCH="v"
+            ;;
+    esac
+ 
     FOLDER="/Users/jgr25/Documents/seapapers-archive/vientiane-times/$year/*.pdf"
     for f in $FOLDER
     do
         for skip in "${exclude[@]}"
         do
             if [ "$skip" == "$f" ]; then
-                echo "skipping $f"
+                echo "$f ********* SKIPPED *************"
                 continue 2;
             fi
         done
         
-        firstlines=`pdfgrep -m 1 -A 6 'V' $f`
+        firstlines=`pdfgrep -i -m 1 -B 5 -A 15 "${STARTSEARCH}" $f`
         if [ $? -eq 1 ];then
             echo "error finding V: $f"
             break 2
         fi
-        grep -i 'volume\|issue\|kip\|established\|1994' <<< $firstlines
+        firstline=`echo "$firstlines" | tr -s "[:space:]"`
+        # grep -i 'volume\|issue\|kip\|established\|1994' <<< $firstlines
+        #grep -i 'jan\|feb\|mar\|apr\|may\|jun\|jul\|aug\|sep\|oct\|nov\|dec\|volume\|issue' <<< $firstlines
+        #grep -i 'january\|february\|march\|april\|may\|june\|july\|august\|september\|october\|november\|december\|kip' <<< $firstlines
+        match=`grep -i -o '[A-Z]* [0-9]*,.*[0-9]* ISSUE [0-9]*' <<< $firstline`
         if [ $? -eq 1 ];then
             echo "unparsed $f"
-            echo "$firstlines"
+            echo "$firstline"
             break 2
+        else
+            echo "$f $match"
         fi
     done
 done
