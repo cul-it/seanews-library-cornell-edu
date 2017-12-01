@@ -47,19 +47,30 @@ exclude=(
 /Users/jgr25/Documents/seapapers-archive/vientiane-times/2014/192cd2014.pdf
 /Users/jgr25/Documents/seapapers-archive/vientiane-times/2014/234cd2014.pdf
 /Users/jgr25/Documents/seapapers-archive/vientiane-times/2014/250cd2014.pdf
+/Users/jgr25/Documents/seapapers-archive/vientiane-times/2016/271cd2016s.pdf
+/Users/jgr25/Documents/seapapers-archive/vientiane-times/2016/272cd2016.pdf
 )
+
+skiprest="/Users/jgr25/Documents/seapapers-archive/vientiane-times/2016/271cd2016s.pdf
+"
 
 for year in "${YEARS[@]}"
 do
-    if [ "$year" -lt 2014 ]; then
+    if [ "$year" -lt 1994 ]; then
     continue
     fi
     case $year in
+        199[0123456789]) 
+            STARTSEARCH="volume"
+            DATEMATCH="[A-Z]* [A-Z 0-9]*-[A-Z 0-9]*,.*[0-9]* [0-9]* KIP"
+            ;;
         200[012345]) 
             STARTSEARCH="volume"
+            DATEMATCH="[A-Z]* [0-9]*,.*[0-9]* ISSUE [0-9]*"
             ;;
         200[68]) 
             STARTSEARCH="newspaper"
+            DATEMATCH="[A-Z]* [0-9]*,.*[0-9]* ISSUE [0-9]*"
             ;;
         2007)
             # filenames are like 'Vientiane Times_2007_01_15.pdf'
