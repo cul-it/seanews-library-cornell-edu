@@ -2,7 +2,7 @@
 
 function find_month($path, $header) {
     $months = '/january|february|march|april|may|june|july|august|september|october|november|december/';
-    $month_chars = '/([jfmasond][abcdefghijlmnoprstuvy ]+) [0-9]/';
+    $month_chars = '/([jfmasond][abcdefghijlmnoprstuvy ]+) ?[0-9]/';
     if (preg_match($months, $header, $matches)) {
         return $matches[0];
     }
@@ -20,7 +20,7 @@ function find_month($path, $header) {
 }
 
 function find_date($path, $header, $year) {
-    $re = "/([0-9]+), $year/";
+    $re = "/([0-9]+) ?, ?$year/";
     if (preg_match($re, $header, $matches)) {
         return $matches[1];
      }
@@ -30,7 +30,10 @@ function find_date($path, $header, $year) {
 }
 
 function output($path, $month, $day, $year, $first = false) {
-    if(($timestamp = strtotime("$day $month $year")) === false) {
+    if (empty($month) || empty($day) || empty($year)) {
+        $parsed = '';
+    }
+    elseif (($timestamp = strtotime("$day $month $year")) === false) {
         $parsed = '';
     }
     else {
@@ -45,7 +48,7 @@ function output($path, $month, $day, $year, $first = false) {
 function reject($path, $reason, $header, $first = false) {
     $mode = $first ? "w" : "a";
     $fp = fopen( "file-parser-rejects.txt", $mode);
-    fwrite( $fp, "$path\t$reason\n$header\n\n");
+    fwrite( $fp, "$path\t$reason\t$header\n");
     fclose( $fp);
 }
 
@@ -64,7 +67,7 @@ function year_startsearch($year) {
         case '2000':
         case '2002':
         case '2003':
-            $startsearch = "volume";
+            $startsearch = "established";
             break;
 
         case '2004':
@@ -104,11 +107,12 @@ function year_startsearch($year) {
 }
 
 function get_header($startsearch, $path) {
-    $cmd = "pdfgrep -i -m 1 -B 5 -A 15 '$startsearch' $path";
+    $cmd = "pdfgrep -i -m 1 -B 5 -A 30 '$startsearch' $path";
     $output = array();
     exec( $cmd, $output, $error);
     if ($error != 0) {
-        throw new Exception("Error Processing get_header $path", 1);       
+        return '';
+        //throw new Exception("Error Processing get_header $error, $path\n$cmd", 1);       
     }
     $lines = '';
     foreach ($output as $line) {
@@ -117,28 +121,8 @@ function get_header($startsearch, $path) {
     return $lines;
 }
 
-function get_page_header($path) {
-    $cmd = "pdfgrep -i -m 1 -B 5 -A 100 'v' $path";
-    $output = array();
-    exec( $cmd, $output, $error);
-    if ($error != 0) {
-        throw new Exception("Error Processing get_header $path", 1);       
-    }
-    $lines = '';
-    foreach ($output as $line) {
-        if (preg_match('/^vient.+[0-9]+$/', $line) ||
-            preg_match('/^[0-9]+.+times$/', $line)) {
-            $line = strtolower(preg_replace('!\s+!', ' ', $line));
-            return $line;
-        }
-        $lines .= $line;
-    }
-    die("no page header found\n$lines\n$path\n");
-    return $lines;
-    
-}
-
 try {
+    //$last_file = "/Users/jgr25/Documents/seapapers-archive/vientiane-times/2016/271cd2016s.pdf";
     date_default_timezone_set('America/New_York');
     $months = 'january|february|march|april|may|june|july|august|september|october|november|december';    
     $month_names = explode('|', $months);
@@ -155,9 +139,9 @@ try {
             echo "Non - numeric year! $year\n";
             continue;
         }
-        if ($year != 2000) {
-            continue;
-        }
+        // if ($year != 2001) {
+        //     continue;
+        // }
         $filename_parts = explode('.', $filename);
         $ext = array_pop($filename_parts);
         if (strtolower($ext) == 'pdf') {
@@ -172,7 +156,18 @@ try {
                 output($file, $month, $day, $year);
             }
             elseif ($year == 2001) {
-                # problem with 01-53
+                # problem with 01-52
+                list($yr,$issue) = explode('-', $filename_parts[0]);
+                if (($issue+0) < 53) {
+                    $startsearch = 'issue';
+                }
+                else {
+                    $startsearch = '4000 kip';
+                }
+                $header = get_header($startsearch, $file);
+                $month = find_month($file, $header);
+                $date = find_date($file, $header, $year);
+                output($file, $month, $date, $year);
             }
             else {
                 $startsearch = year_startsearch($year);
