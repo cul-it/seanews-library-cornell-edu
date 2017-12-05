@@ -1,2 +1,4 @@
 # ignore the raw csv file
 issues.csv
+*.txt
+*.tab
