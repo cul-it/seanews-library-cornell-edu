@@ -1,4 +1,5 @@
 # ignore the raw csv file
-issues.csv
+*.csv
 *.txt
 *.tab
+*.log
