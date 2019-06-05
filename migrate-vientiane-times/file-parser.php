@@ -87,6 +87,8 @@ function year_startsearch($year) {
         case '2014':
         case '2015':
         case '2016':
+        case '2017':
+        case '2018':
             $startsearch = "newspaper";
             break;
         
@@ -128,7 +130,7 @@ try {
     $month_names = explode('|', $months);
     output('path', 'month', 'day', 'year', true); // initialize the output file
     reject('path', 'reason', 'header', true); // initialize the reject file
-    $it = new RecursiveDirectoryIterator("/Users/jgr25/Documents/seapapers-archive/vientiane-times");
+    $it = new RecursiveDirectoryIterator("/Users/jgr25/Documents/back-burner/seapapers-archive/vientiane-times-new");
     $display = Array ( 'pdf' );
     foreach(new RecursiveIteratorIterator($it) as $file)
     {
