@@ -29,6 +29,12 @@ function find_date($path, $header, $year) {
      return '';
 }
 
+function header_titles() {
+    $fp = fopen( "file-parser-output.txt", 'w');
+    fwrite( $fp, "path\tmonth\tday\tyear\tdate\n");
+    fclose( $fp);
+}
+
 function output($path, $month, $day, $year, $first = false) {
     if (empty($month) || empty($day) || empty($year)) {
         $parsed = '';
@@ -91,6 +97,10 @@ function year_startsearch($year) {
         case '2018':
             $startsearch = "newspaper";
             break;
+
+        case '2019':
+            $startsearch = 'Vientiane Times';
+            break;
         
         case '2009':
             $startsearch = "vientianetimes";
@@ -128,9 +138,10 @@ try {
     date_default_timezone_set('America/New_York');
     $months = 'january|february|march|april|may|june|july|august|september|october|november|december';    
     $month_names = explode('|', $months);
-    output('path', 'month', 'day', 'year', true); // initialize the output file
+    header_titles();
+    //output('path', 'month', 'day', 'year', true); // initialize the output file
     reject('path', 'reason', 'header', true); // initialize the reject file
-    $it = new RecursiveDirectoryIterator("/Users/jgr25/Documents/back-burner/seapapers-archive/vientiane-times-new");
+    $it = new RecursiveDirectoryIterator("/Users/jgr25/Documents/back-burner/seapapers-archive/vientiane-times-2019");
     $display = Array ( 'pdf' );
     foreach(new RecursiveIteratorIterator($it) as $file)
     {
@@ -138,7 +149,7 @@ try {
         $filename = array_pop($dirs);
         $year = array_pop($dirs);
         if (!is_numeric($year)) {
-            echo "Non - numeric year! $year\n";
+            echo "Non - numeric year! $year in $file\n";
             continue;
         }
         // if ($year != 2001) {
@@ -176,6 +187,12 @@ try {
                 $header = get_header($startsearch, $file);
                 $month = find_month($file, $header);
                 $date = find_date($file, $header, $year);
+                if (empty($date)) {
+                    echo "year: $year, month: $month\n";
+                    echo $header;
+                    throw new Exception("Error Processing Request", 1);
+                    
+                }
                 output($file, $month, $date, $year);
             }
             echo "$year: $filename $month $date\n";
