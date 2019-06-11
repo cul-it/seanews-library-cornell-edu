@@ -97,6 +97,10 @@ function year_startsearch($year) {
         case '2018':
             $startsearch = "newspaper";
             break;
+
+        case '2019':
+            $startsearch = 'Vientiane Times';
+            break;
         
         case '2009':
             $startsearch = "vientianetimes";
