@@ -149,7 +149,7 @@ try {
         $filename = array_pop($dirs);
         $year = array_pop($dirs);
         if (!is_numeric($year)) {
-            echo "Non - numeric year! $year\n";
+            echo "Non - numeric year! $year in $file\n";
             continue;
         }
         // if ($year != 2001) {
@@ -187,6 +187,12 @@ try {
                 $header = get_header($startsearch, $file);
                 $month = find_month($file, $header);
                 $date = find_date($file, $header, $year);
+                if (empty($date)) {
+                    echo "year: $year, month: $month\n";
+                    echo $header;
+                    throw new Exception("Error Processing Request", 1);
+                    
+                }
                 output($file, $month, $date, $year);
             }
             echo "$year: $filename $month $date\n";
