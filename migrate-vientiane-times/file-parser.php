@@ -141,7 +141,7 @@ try {
     header_titles();
     //output('path', 'month', 'day', 'year', true); // initialize the output file
     reject('path', 'reason', 'header', true); // initialize the reject file
-    $it = new RecursiveDirectoryIterator("/Users/jgr25/Documents/back-burner/seapapers-archive/vientiane-times-new");
+    $it = new RecursiveDirectoryIterator("/Users/jgr25/Documents/back-burner/seapapers-archive/vientiane-times-2019");
     $display = Array ( 'pdf' );
     foreach(new RecursiveIteratorIterator($it) as $file)
     {
