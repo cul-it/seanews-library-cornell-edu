@@ -29,6 +29,12 @@ function find_date($path, $header, $year) {
      return '';
 }
 
+function header_titles() {
+    $fp = fopen( "file-parser-output.txt", 'w');
+    fwrite( $fp, "path\tmonth\tday\tyear\tdate\n");
+    fclose( $fp);
+}
+
 function output($path, $month, $day, $year, $first = false) {
     if (empty($month) || empty($day) || empty($year)) {
         $parsed = '';
@@ -128,7 +134,8 @@ try {
     date_default_timezone_set('America/New_York');
     $months = 'january|february|march|april|may|june|july|august|september|october|november|december';    
     $month_names = explode('|', $months);
-    output('path', 'month', 'day', 'year', true); // initialize the output file
+    header_titles();
+    //output('path', 'month', 'day', 'year', true); // initialize the output file
     reject('path', 'reason', 'header', true); // initialize the reject file
     $it = new RecursiveDirectoryIterator("/Users/jgr25/Documents/back-burner/seapapers-archive/vientiane-times-new");
     $display = Array ( 'pdf' );
